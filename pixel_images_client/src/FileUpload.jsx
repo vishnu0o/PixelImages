@@ -67,7 +67,7 @@ const FileUpload = ({ closeHandler, sIndex }) => {
       }
       
     } catch (error) {
-      
+      console.log(error)
     }
     navigate("/image", { state: { images, sIndex, url } });
 
