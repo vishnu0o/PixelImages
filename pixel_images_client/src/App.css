@@ -1,0 +1,26 @@
+.App {
+  height: 100vh;
+  font-family: sans-serif;
+}
+.image-canvas{
+  /* background-image: url("./assets/image.jpg"); */
+  /* background-size: contain; */
+}
+.gold-gradient-text {
+  color: rgba(252, 231, 0, 0.824);
+  
+}
+.stroke-1-black {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.side-icons{
+  font-size: 35px;
+}
+
+.backgroundIMG{
+  width: 100%;
+  background-size: contain;
+  background-position: cover;
+}
