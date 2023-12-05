@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "./config/firebase";
 import background from "./assets/image.jpg";
@@ -14,7 +14,10 @@ const ImageMixer = () => {
   const { data } = useSelector((state) => state.data);
   const [success, setSuccess] = useState(null);
   const navigate = useNavigate();
+  // const {images,sIndex,url} = useParams()
 
+console.log(images,"ssssssssssssssssssssssss")
+console.log(sIndex,"sssssaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   useEffect(() => {
     data && imageMix();
   }, [images, data]);

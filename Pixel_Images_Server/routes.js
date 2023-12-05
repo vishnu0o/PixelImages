@@ -6,7 +6,9 @@ const stripe = Stripe(process.env.STRIPE_KEY);
 
 router.post("/", async (req, res) => {
   try {
-    const { amount } = req.body;
+    const { amount,state} = req.body;
+
+    console.log(state,"stateeeee")
 
     const customer = await stripe.customers.create({
       metadata: {
@@ -32,11 +34,12 @@ router.post("/", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.CLIENT_URL}image`,
+      success_url: `${process.env.CLIENT_URL}upload`
     //   cancel_url: `${process.env.CLIENT_URL}/paymentFail`,
     });
 
-    res.send({ url: session.url });
+
+    res.send({ url: session.url,status:true });
   } catch (error) {
     console.error("Error creating payment intent:", error);
     res.status(500).json({ error: "Failed to create payment intent" });

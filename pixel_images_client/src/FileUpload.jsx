@@ -6,8 +6,6 @@ const axiosInstance = axios.create({
   baseURL: "http://localhost:3000/",
 });
 
-
-
 const FileUpload = ({ closeHandler, sIndex }) => {
   const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
@@ -18,6 +16,8 @@ const FileUpload = ({ closeHandler, sIndex }) => {
     setSelectedFile(event.target.files[0]);
     setImage(URL.createObjectURL(event.target.files[0]));
   };
+
+  console.log(selectedFile, "imageeeeeeeeeeeeeee")
 
   const handleUrl = (e) => {
     setUrl(e.target.value);
@@ -46,7 +46,7 @@ const FileUpload = ({ closeHandler, sIndex }) => {
 
   let co = `${k}, ${l}, ${m}, ${n}`;
 
-  const uploadHandler =async () => {
+  const uploadHandler = async () => {
     let images = [
       {
         image,
@@ -57,22 +57,20 @@ const FileUpload = ({ closeHandler, sIndex }) => {
         co,
       },
     ];
-    try {
-
-      const response = await axiosInstance.post("/", {
-        amount:1000
-      });
-      if (response.data.url) {
-        window.location.href = response.data.url;
+    navigate("/image", { state: { images, sIndex, url }});
+    const response = await axiosInstance.post("/", {
+      amount: 1000,
+      state: {
+        images,
+        sIndex,
+        url
       }
-      
-    } catch (error) {
-      console.log(error)
+    });
+    console.log(response, "d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d d")
+    if (response.data.url) {
+      window.location.href = response.data.url;
     }
-    navigate("/image", { state: { images, sIndex, url } });
-
   };
-
 
   return (
     <div
